@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ICharacter } from '../starwars.interface';
+import { StarwarsDataService } from '../starwars-data.service';
 
 @Component({
   selector: 'cm-customers-list',
@@ -8,12 +9,13 @@ import { ICharacter } from '../starwars.interface';
 })
 export class CustomersListComponent implements OnInit {
 
-  @Input() customers: ICharacter;
+  @Input() customers: ICharacter[];
   detailChar;
 
-  constructor() { }
+  constructor(private serv: StarwarsDataService) { }
 
   ngOnInit() {
+    this.serv.getCharacters().subscribe(data => this.customers = data);
   }
   
   showDetail(Char)
