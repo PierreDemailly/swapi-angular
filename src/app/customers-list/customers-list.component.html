@@ -1,9 +1,12 @@
 <h2>Customers</h2>
 <ul>
-  <li *ngFor="let c of customers" (click)="showDetail(c)">
+  <li *ngFor="let c of customers" (click)="showDetail(c.name)">
     {{ c.name }}
   </li>
 </ul>
+<select #this (change)="showDetail($event.target.value)">
+  <option *ngFor="let c of customers" (value)="c.name">{{ c.name }}</option>
+</select>
 <div *ngIf="detailChar">
-  Vous avez cliqué sur {{ detailChar.name }}
+  Vous avez cliqué sur {{ detailChar }}
 </div>

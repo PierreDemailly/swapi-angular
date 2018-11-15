@@ -21,6 +21,7 @@ export class CustomersListComponent implements OnInit {
   showDetail(Char)
   {
     this.detailChar = Char;
+    console.log(Char);
   }
 
 }
