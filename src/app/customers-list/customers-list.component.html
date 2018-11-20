@@ -1,12 +1,16 @@
-<h2>Customers</h2>
-<ul>
-  <li *ngFor="let c of customers" (click)="showDetail(c.name)">
+<ul *ngIf="customers">
+  <li *ngFor="let c of customers" (click)="showDetail(c)">
     {{ c.name }}
   </li>
 </ul>
-<select #this (change)="showDetail($event.target.value)">
-  <option *ngFor="let c of customers" (value)="c.name">{{ c.name }}</option>
-</select>
-<div *ngIf="detailChar">
-  Vous avez cliqué sur {{ detailChar }}
+<div id="details" class="details">
+  <div *ngIf="detailChar;else default">
+    <p class="title">{{ detailChar.name }} details</p>
+    <ul>
+      <li *ngFor="let k of objectKeys(detailChar)">
+        {{ k }}: <span>{{ detailChar[k] }}</span>
+      </li>
+    </ul>
+  </div>
+  <ng-template #default><p class="title">Choisissez un personnage</p></ng-template>
 </div>

@@ -21,4 +21,14 @@ export class StarwarsDataService {
       return data['results'];
     })
   }
+
+  getHomeworld(url) 
+  {
+    return this.http.get(url);
+  }
+
+  getFilms(url)
+  {
+    return this.http.get(url);
+  }
 }

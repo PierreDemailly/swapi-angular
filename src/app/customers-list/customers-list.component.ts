@@ -8,7 +8,7 @@ import { StarwarsDataService } from '../starwars-data.service';
   styleUrls: ['./customers-list.component.css']
 })
 export class CustomersListComponent implements OnInit {
-
+  objectKeys = Object.keys;
   @Input() customers: ICharacter[];
   detailChar;
 
@@ -21,7 +21,16 @@ export class CustomersListComponent implements OnInit {
   showDetail(Char)
   {
     this.detailChar = Char;
-    console.log(Char);
+    this.serv.getHomeworld(this.detailChar.homeworld)
+    .subscribe(data => this.detailChar.homeworld = data.name);
+    );
+    this.serv.getFilms(this.detailChar.films)
+
+    this.redirectToDetails();
   }
 
+  redirectToDetails()
+  {
+  document.querySelector('#details').scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
 }
