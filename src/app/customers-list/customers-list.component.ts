@@ -22,7 +22,7 @@ export class CustomersListComponent implements OnInit {
   {
     this.detailChar = Char;
     this.serv.getHomeworld(this.detailChar.homeworld)
-    .subscribe(data => this.detailChar.homeworld = data.name);
+    .subscribe(data => this.detailChar.homeworld = data.name
     );
     this.serv.getFilms(this.detailChar.films)
 
